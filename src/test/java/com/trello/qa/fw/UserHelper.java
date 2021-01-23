@@ -13,18 +13,21 @@ public class UserHelper extends HelperBase {
         click(By.xpath("//*[@href='/login']"));
     }
 
-    public void fillLoginForm(User user) {
+    public void fillLoginForm(User user) throws InterruptedException {
 
         typeBy(By.id("user"),user.getEmail());
+        Thread.sleep(2000);
+        click(By.id("login"));
         typeBy(By.id("password"),user.getPswd());
 
     }
 
     public void confirmLogin() {
-        click(By.id("login"));
+        click(By.id("login-submit"));
     }
 
-    public boolean isAvatarPresent(By locator) {
-        return wd.findElements(locator).size()>0;
+    public boolean isAvatarPresent() throws InterruptedException {
+        Thread.sleep(20000);
+        return isElementPresent(By.cssSelector("[data-test-id='header-member-menu-button']"));
     }
 }
