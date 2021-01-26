@@ -14,7 +14,7 @@ public class ApplicationManager {
 
     public void start() {
         wd = new ChromeDriver();
-        wd.navigate().to("https://trello.com/");
+        wd.navigate().to("https://trello.com");
         wd.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
 
         userHelper = new UserHelper(wd);
